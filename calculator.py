@@ -3,74 +3,118 @@
 import math
 
 def somar():
-    numero1 = float (input("Digite o primeiro número: "))
-    numero2 = float (input("Digite o segundo número: "))
-    resultado = numero1 + numero2
+    try:
+        numero1 = float (input("Digite o primeiro número: "))
+        numero2 = float (input("Digite o segundo número: "))
+        return numero1 + numero2
+    except ValueError:
+        print("\n")
+        print("Digite um número válido")
 
-def diminuir():
-    numero1 = float (input("Digite o primeiro número: "))
-    numero2 = float (input("Digite o segundo número: "))
-    resultado = numero1 - numero2
+def subtracao():
+    try:
+        numero1 = float (input("Digite o primeiro número: "))
+        numero2 = float (input("Digite o segundo número: "))
+        return numero1 - numero2
+    except ValueError:
+        print("\n")
+        print("Digite um número válido")
 
-def multiplicar():
-    numero1 = float (input("Digite o primeiro número: "))
-    numero2 = float (input("Digite o segundo número: "))
-    resultado = numero1 * numero2
-    mostrar_resultado(resultado)
+def multiplicacao():
+    try:
+        numero1 = float (input("Digite o primeiro número: "))
+        numero2 = float (input("Digite o segundo número: "))
+        return numero1 * numero2
+    except ValueError:
+        print("\n")
+        print("Digite um número válido")
 
-def dividir():
-    numero1 = float (input("Digite o primeiro número: "))
-    numero2 = float (input("Digite o segundo número: "))
-    resultado = numero1 / numero2
-    mostrar_resultado(resultado)
+def divisao():
+    try:
+        numero1 = float (input("Digite o primeiro número: "))
+        numero2 = float (input("Digite o segundo número: "))
+
+        if numero2 == 0:
+            print("A divisão não pode ser por 0")
+        return numero1 / numero2
+    except ValueError:
+        print("\n")
+        print("Digite um número válido")
 
 def potencia():
-    numero1 = input("Digite o número: ")
-    numero2 = input("Digite a potência: ")
-    resultado = numero1 ** numero2
-    mostrar_resultado(resultado)
+    try:
+        numero1 = float(input("Digite o número: "))
+        numero2 = float(input("Digite a potência: "))
+        return numero1 ** numero2
+    except ValueError:
+        print("\n")
+        print("Digite um número válido")
 
 def seno():
-    ang = int (input("Digite o ângulo: "))
-    rad = math.radians(ang)
-    resultado = round(math.sin(rad), 3)
-    mostrar_resultado(resultado)
+    try:
+        ang = int (input("Digite o ângulo: "))
+        rad = math.radians(ang)
+        return round(math.sin(rad), 3)
+    except ValueError:
+        print("\n")
+        print("Digite um número válido")
 
 def cosseno():
-    ang = int (input("Digite o ângulo: "))
-    rad = math.radians(ang)
-    resultado = round(math.con(rad), 3)
-    mostrar_resultado(resultado)
+    try:
+        ang = int (input("Digite o ângulo: "))
+        rad = math.radians(ang)
+        return round(math.con(rad), 3)
+    except ValueError:
+        print("\n")
+        print("Digite um número válido")
 
 def raiz():
-    numero = float(input("Digite um número: "))
-    if numero < 0:
-        return "Erro: Raiz quadrada de número negativo não é permitida."
-    resultado = round(math.sqrt(numero), 3)
-    mostrar_resultado(resultado)
+    try:
+        numero = float(input("Digite um número: "))
+        if numero < 0:
+            print("Erro: Raiz quadrada de número negativo não é permitida.")
+            return
+        return round(math.sqrt(numero), 3)
+    except ValueError:
+        print("\n")
+        print("Digite um número válido")
 
 def percentual():
-    parte = float(input("Digite a parte: "))
-    total = float(input("Digite o total: "))
-    if total == 0:
-        return "Erro: Divisão por zero não é permitida."
-    resultado =  (parte / total) * 100
-    mostrar_resultado(resultado)
+    try:
+        parte = float(input("Digite a parte: "))
+        total = float(input("Digite o total: "))
+        if total == 0:
+            return "Erro: Divisão por zero não é permitida."
+        return (parte / total) * 100
+    except ValueError:
+        print("\n")
+        print("Digite um número válido")
 
 def fatorial():
-    num = int(input("Digite um número inteiro: "))
-    if num < 0:
-        return "Erro: Fatorial de número negativo não é permitido."
-    resultado = math.factorial(num)
-    mostrar_resultado(resultado)
+    try:
+        num = int(input("Digite um número inteiro: "))
+        if num < 0:
+            return "Erro: Fatorial de número negativo não é permitido."
+        return math.factorial(num)
+    except ValueError:
+        print("\n")
+        print("Digite um número válido")
 
 def mostrar_resultado(resultado):
-    print("O resultado é: ", resultado)
+    if resultado != None:
+        print("\n")
+        print("==========================")
+        print("O resultado é: ", resultado)
+        print("==========================")
+    
 
 # Tela
 
 while True:
 
+    print("\n")
+    print("====================================================")
+    print("***CALCULADORA***")
     print("\n1 - Soma")
     print("2 - Subtração")
     print("3 - Multiplicação")
@@ -82,45 +126,60 @@ while True:
     print("9 - Percentual")
     print("10 - Fatorial")
     print("11- Sair")
+    print("====================================================")
     operacao = input("\nDigite o número da operação desejada: ")
+    
 
 # Operadores
 
     if operacao.isnumeric():
+        operacao = int(operacao)
 
         if operacao == 1:
-            somar()
+            resultado = somar()
+            mostrar_resultado(resultado)
 
-        if operacao == 2:
-            diminuir()
+        elif operacao == 2:
+            resultado = subtracao()
+            mostrar_resultado(resultado)
 
-        if operacao == 3:
-            multiplicar()
+        elif operacao == 3:
+            resultado = multiplicacao()
+            mostrar_resultado(resultado)
 
-        if operacao == 4:
-            dividir()
+        elif operacao == 4:
+             resultado = divisao()
+             mostrar_resultado(resultado)
         
-        if operacao == 5:
-            potencia()
+        elif operacao == 5:
+            resultado = potencia()
+            mostrar_resultado(resultado)
 
-        if operacao == 6:
-            seno()
+        elif operacao == 6:
+            resultado = seno()
+            mostrar_resultado(resultado)
 
-        if operacao == 7:
-            cosseno()
+        elif operacao == 7:
+            resultado = cosseno()
+            mostrar_resultado(resultado)
 
-        if operacao == 8:
-            raiz()
+        elif operacao == 8:
+            resultado = raiz()
+            mostrar_resultado(resultado)
 
-        if operacao == 9:
-            percentual() 
+        elif operacao == 9:
+            resultado = percentual() 
+            mostrar_resultado(resultado)
 
-        if operacao == 10:
-            fatorial()
+        elif operacao == 10:
+            resultado = fatorial()
+            mostrar_resultado(resultado)
 
-        if operacao == 11:
+        elif operacao == 11:
             print("Encerrando a calculadora...")
             break
 
+        else:
+            print("Insira um número válido")
     else:
-	    print("Insira um número válido")
+	    print("\n Ação não suportada")
