@@ -2,15 +2,15 @@
 
 import math
 
-# Váriaveis
+# Métodos
 
 def realizar_operaoes_simples(operacao):
-    numero1 = input("Digite o primeiro número: ")
+    numero1 = float(input("Digite o primeiro número: "))
 
     if operacao == 5:
-        numero2 = input("Digite a potência: ")
+        numero2 = float(input("Digite a potência: "))
     else:
-        numero2 = input("Digite o segundo número: ")
+        numero2 = float(input("Digite o segundo número: "))
 
     if operacao == 1:
         resultado = numero1 + numero2
@@ -27,34 +27,49 @@ def realizar_operaoes_simples(operacao):
     elif operacao == 5:
         resultado = numero1 ** numero2
 
-    print("O resultado é: ", resultado)
+    apresenta_resultado(resultado)
 
-def realizar_operaoes_seno_cosseno(operacao):
-    ang = int (input("Digite o ângulo: "))
+def realizar_operaoes_seno_cosseno(operacao): 
+    ang = int(input("Digite o ângulo: "))
     rad = math.radians(ang)
 
     if operacao == 6:
-         resultado = math.sin(rad)
+         resultado = round(math.sin(rad), 3)
     else:
-        resultado = math.cos(rad)
+        resultado = round(math.cos(rad), 3)
 
-    print("O resultado é: ", resultado)
+    apresenta_resultado(resultado)
 
-def raiz_quadrada(x):
-    if x < 0:
+def raiz_quadrada():
+    num = float(input("Digite um número: "))
+    if num < 0:
         return "Erro: Raiz quadrada de número negativo não é permitida."
-    return math.sqrt(x)
+    resultado = round(math.sqrt(num), 3)
 
-def percentual(parte, total):
+    apresenta_resultado(resultado)
+
+def percentual(): 
+    parte = float(input("Digite a parte: "))
+    total = float(input("Digite o total: "))
     if total == 0:
         return "Erro: Divisão por zero não é permitida."
-    return (parte / total) * 100
+    resultado =  (parte / total) * 100
 
-def fatorial(x):
-    if x < 0:
+    apresenta_resultado(resultado)
+
+def fatorial():
+    num = int(input("Digite um número inteiro: "))
+    if num < 0:
         return "Erro: Fatorial de número negativo não é permitido."
-    return math.factorial(x)
+    resultado = math.factorial(num)
+
+    apresenta_resultado(resultado)
     
+
+def apresenta_resultado(resultado):
+    print("\n O resultado é: ", resultado)
+
+    # Menu Inicial
 
 while True:
      
@@ -83,15 +98,11 @@ while True:
         elif operacao in [6,7]:
              realizar_operaoes_seno_cosseno(operacao)
         elif operacao == 8:
-            num = float(input("Digite um número: "))
-            print("Raiz Quadrada de", num, "é", raiz_quadrada(num))
+            raiz_quadrada()
         elif operacao == 9:
-            parte = float(input("Digite a parte: "))
-            total = float(input("Digite o total: "))
-            print("Percentual é", percentual(parte, total), "%")
+            percentual()
         elif operacao == 10:
-            num = int(input("Digite um número inteiro: "))
-            print("Fatorial de", num, "é", fatorial(num))
+            fatorial()
         elif operacao == 11:
             print("Encerrando a calculadora...")
             break
@@ -99,4 +110,3 @@ while True:
             print("Operação não suportada")
     else:
         print('Por favor, insira um número válido')
-    
